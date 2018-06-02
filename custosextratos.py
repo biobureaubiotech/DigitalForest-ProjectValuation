@@ -3,43 +3,26 @@ import numpy
 
 def custo():
     global custototal
-    global defidcol
-    global ext
-    global abio
     
-    numamostras = 600
-    defidcol = random.randint(300,1000) #chute orçamento phytobios R$1000,00 expedição + extrato
+    numamostras = 1000
+    defidcol = random.randint(300,1000) #chute
     ext = random.randint(180,500) #extração etanólica (orçamentosenai,chute)
     abio = random.randint(40,900) #(orçamentoMTK,orçamentoGSS)
     custototal = numamostras*(defidcol + ext + abio)
     #print('O custo total foi R$%i.00 considerando um valor para definição, identificação e coleta de R$%i.00, para extratos de R$%i.00 e para acesso a bioversidade de R$%i.00.' %(custototal, defidcol, ext, abio))
 
+n = 100000
 i=0
 listacusto = []
-listadefidcol = []
-listaext = []
-listaabio = []
 
-while i < 100000:
+while i < n:
     custo()
     listacusto.append(custototal)
-    listadefidcol.append(defidcol)
-    listaext.append(ext)
-    listaabio.append(abio)
     i+=1
 
-#print(listacusto)
-print(numpy.mean(listacusto))
-#print(numpy.std(listacusto))
-print((numpy.std(listacusto)/ numpy.mean(listacusto))*100) #coeficiente de variação (desvio padrão relativo)
-print(min(listacusto))
-print(max(listacusto))
-#print('###')
-#print(numpy.mean(listadefidcol))
-#print((numpy.std(listadefidcol/ numpy.mean(listadefidcol))*100))
-#print('###')
-#print(numpy.mean(listaext))
-#print((numpy.std(listaext)/ numpy.mean(listaext))*100) 
-#print('###')
-#print(numpy.mean(listaabio))
-#print((numpy.std(listaabio/ numpy.mean(listaabio))*100)) 
+print('Após {:,} simulações: \
+        \n custo médio: R${:,.2f} \
+        \n coeficiente de variação: {:.0f}% \
+        \n menor custo calculado: R${:,.2f} \
+        \n e o maior: R${:,.2f}.' \
+      .format(n, numpy.mean(listacusto), (numpy.std(listacusto)/numpy.mean(listacusto))*100, min(listacusto), max(listacusto)))
