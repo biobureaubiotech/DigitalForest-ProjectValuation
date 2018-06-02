@@ -11,7 +11,7 @@ def custo():
     custototal = numamostras*(defidcol + ext + abio)
     #print('O custo total foi R$%i.00 considerando um valor para definição, identificação e coleta de R$%i.00, para extratos de R$%i.00 e para acesso a bioversidade de R$%i.00.' %(custototal, defidcol, ext, abio))
 
-n = 100000
+n = 100000 #número de simulações p/ o método de Monte Carlo
 i=0
 listacusto = []
 
